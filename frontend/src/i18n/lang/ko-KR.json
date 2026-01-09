@@ -67,7 +67,8 @@
 			"noAccountYet": "아직 계정이 없으신가요?",
 			"alreadyHaveAnAccount": "이미 계정이 있으신가요?",
 			"remember": "로그인 상태 유지",
-			"registrationDisabled": "등록이 비활성화되었습니다."
+			"registrationDisabled": "등록이 비활성화되었습니다.",
+			"passwordResetTokenMissing": "비밀번호 재설정 토큰이 누락되었습니다."
 		},
 		"settings": {
 			"title": "환경설정",
@@ -101,7 +102,25 @@
 				"overdueTasksRemindersTime": "기한이 지난 할 일 이메일 알림 시간",
 				"filterUsedOnOverview": "개요 페이지에 사용되는 저장된 필터",
 				"minimumPriority": "최소 표시 작업 우선순위",
-				"externalUserNameChange": "당신의 이름은 로그인 제공자({provider})에 의해 관리됩니다. 이름을 변경하려면 해당 서비스에서 업데이트해주세요."
+				"externalUserNameChange": "당신의 이름은 로그인 제공자({provider})에 의해 관리됩니다. 이름을 변경하려면 해당 서비스에서 업데이트해주세요.",
+				"allowIconChanges": "특정 기간 동안 특별 로고 표시",
+				"alwaysShowBucketTaskCount": "칸반 버킷에 항상 할 일 개수 표시",
+				"defaultTaskRelationType": "기본 할 일 관계 유형",
+				"dateDisplay": "날짜 표시 형식",
+				"dateDisplayOptions": {
+					"relative": "상대적 (예: 3일 전)",
+					"mm-dd-yyyy": "MM-DD-YYYY",
+					"dd-mm-yyyy": "DD-MM-YYYY",
+					"yyyy-mm-dd": "YYYY-MM-DD",
+					"mm/dd/yyyy": "MM/DD/YYYY",
+					"dd/mm/yyyy": "DD/MM/YYYY",
+					"yyyy/mm/dd": "YYYY/MM/DD"
+				},
+				"timeFormat": "시간 형식",
+				"timeFormatOptions": {
+					"12h": "12시간 (AM/PM)",
+					"24h": "24시간 (HH:mm)"
+				}
 			},
 			"totp": {
 				"title": "2단계 인증",
@@ -138,7 +157,8 @@
 				"uploadAvatar": "아바타 업로드",
 				"statusUpdateSuccess": "아바타 상태가 업데이트되었습니다!",
 				"setSuccess": "아바타가 성공적으로 설정되었습니다!",
-				"ldap": "아바타는 조직의 디렉토리 서비스(LDAP)에서 자동으로 동기화됩니다. 아바타를 변경하는 방법에 대한 정보는 IT 팀에 문의할 수 있습니다."
+				"ldap": "아바타는 조직의 디렉토리 서비스(LDAP)에서 자동으로 동기화됩니다. 아바타를 변경하는 방법에 대한 정보는 IT 팀에 문의할 수 있습니다.",
+				"openid": "아바타는 로그인 제공자({provider})에서 자동으로 동기화됩니다. 변경하려면 해당 서비스에서 업데이트해 주세요."
 			},
 			"quickAddMagic": {
 				"title": "빠른 매직 모드 추가",
@@ -182,6 +202,16 @@
 					"expiresAt": "만료일",
 					"permissions": "권한"
 				}
+			},
+			"sections": {
+				"personalInformation": "개인 정보",
+				"taskAndNotifications": "프로젝트 및 할 일",
+				"privacy": "개인정보 보호",
+				"localization": "지역화",
+				"appearance": "모양 및 동작"
+			},
+			"backgroundBrightness": {
+				"title": "배경 밝기"
 			}
 		},
 		"deletion": {
@@ -206,7 +236,9 @@
 			"descriptionPasswordRequired": "계속하려면 비밀번호를 입력하세요:",
 			"request": "내 Vikunja 데이터 사본 요청하기",
 			"success": "Vikunja 데이터를 성공적으로 요청하셨습니다! 다운로드할 준비가 되면 이메일을 보내드리겠습니다.",
-			"downloadTitle": "내보낸 Vikunja 데이터 다운로드"
+			"downloadTitle": "내보낸 Vikunja 데이터 다운로드",
+			"ready": "내보내기가 준비되었습니다. {0}까지 다운로드할 수 있습니다.",
+			"requestNew": "다른 내보내기 요청"
 		}
 	},
 	"project": {
@@ -317,6 +349,12 @@
 			"attributes": {
 				"link": "링크",
 				"delete": "삭제"
+			},
+			"permission": {
+				"title": "권한",
+				"read": "읽기 전용",
+				"readWrite": "읽기 및 쓰기",
+				"admin": "관리자"
 			}
 		},
 		"first": {
@@ -337,7 +375,22 @@
 			"month": "월",
 			"day": "일",
 			"hour": "시",
-			"range": "날짜 범위"
+			"range": "날짜 범위",
+			"chartLabel": "프로젝트 간트 차트",
+			"taskBarsForRow": "{rowId} 행의 할 일 바",
+			"taskBarLabel": "할 일: {task}. {startDate}부터 {endDate}까지. {dateType}. 클릭하여 편집, 드래그하여 이동.",
+			"scheduledDates": "예정된 날짜",
+			"estimatedDates": "예상 날짜",
+			"resizeStartDate": "{task} 할 일의 시작 날짜 조정",
+			"resizeEndDate": "{task} 할 일의 종료 날짜 조정",
+			"timelineHeader": "월과 일이 표시된 타임라인 헤더",
+			"monthsRow": "월 행",
+			"daysRow": "일 행",
+			"monthLabel": "월: {month}",
+			"dayLabel": "일: {date}, {weekday}",
+			"dayLabelToday": "오늘: {date}, {weekday}",
+			"taskAriaLabel": "할 일: {task}",
+			"taskAriaLabelById": "할 일 {id}"
 		},
 		"table": {
 			"title": "테이블",
@@ -386,7 +439,8 @@
 			"create": "휍훅 생성",
 			"secret": "비밀",
 			"secretHint": "제공된 경우, 웹훅 대상 URL에 대한 모든 요청은 HMAC을 사용하여 서명됩니다.",
-			"secretDocs": "비밀 번호를 사용하는 방법에 대한 자세한 내용은 문서를 참조하세요."
+			"secretDocs": "비밀 번호를 사용하는 방법에 대한 자세한 내용은 문서를 참조하세요.",
+			"eventsHint": "이 웹훅이 업데이트를 받을 모든 이벤트를 선택하세요 (현재 프로젝트 내)."
 		},
 		"views": {
 			"header": "보기 편집",
@@ -474,7 +528,9 @@
 					"greaterThanOrEqual": "다음보다 크거나 같음",
 					"lessThan": "다음보다 작음",
 					"lessThanOrEqual": "다음보다 작거나 같음",
-					"like": "패턴 일치(와일드카드 사용 %)"
+					"like": "패턴 일치(와일드카드 사용 %)",
+					"in": "쉼표로 구분된 값 목록의 모든 값과 일치",
+					"notIn": "쉼표로 구분된 값 목록에 없는 모든 값과 일치"
 				},
 				"logicalOperators": {
 					"intro": "여러 조건을 결합하려면 다음 논리 연산자를 사용할 수 있습니다:",
@@ -491,7 +547,8 @@
 					"priorityOneOrTwoPastDue": "우선순위 레벨이 1 또는 2이고 마감일이 과거에 있는 할 일과 일치합니다."
 				}
 			}
-		}
+		},
+		"noResults": "결과 없음"
 	},
 	"migrate": {
 		"title": "다른 서비스에서 가져오기",
@@ -540,7 +597,11 @@
 		"authenticating": "인증 처리 중...",
 		"passwordRequired": "이 공유 프로젝트에는 비밀번호가 필요합니다. 아래에 비밀번호를 입력하세요:",
 		"error": "오류가 발생했습니다.",
-		"invalidPassword": "비밀번호가 유효하지 않습니다."
+		"invalidPassword": "비밀번호가 유효하지 않습니다.",
+		"accessDenied": "접근이 거부되었습니다. 권한을 확인하고 다시 시도하세요.",
+		"serverError": "서버 오류가 발생했습니다. 나중에 다시 시도하세요.",
+		"projectLoadError": "프로젝트 정보를 불러오지 못했습니다.",
+		"retry": "다시 시도"
 	},
 	"navigation": {
 		"overview": "개요",
@@ -749,7 +810,10 @@
 			"overdue": "기한이 지난 할 일 표시",
 			"fromuntil": "{from}부터 {until}까지의 할 일",
 			"select": "날짜 범위 선택",
-			"noTasks": "할 일 없음 - 좋은 하루 되세요!"
+			"noTasks": "할 일 없음 - 좋은 하루 되세요!",
+			"noDates": "날짜 없는 할 일 표시",
+			"filterByLabel": "{label} 레이블로 필터링",
+			"clearLabelFilter": "레이블 필터 지우기"
 		},
 		"detail": {
 			"chooseDueDate": "마감일을 설정하려면 여기를 클릭하세요.",
@@ -791,7 +855,9 @@
 				"delete": "삭제",
 				"favorite": "즐겨찾기에 추가",
 				"unfavorite": "즐겨찾기에서 제거"
-			}
+			},
+			"back": "프로젝트로 돌아가기",
+			"scrollToBottom": "아래로 스크롤"
 		},
 		"attributes": {
 			"assignees": "담당자",
@@ -811,7 +877,9 @@
 			"startDate": "시작일",
 			"title": "제목",
 			"updated": "업데이트됨",
-			"doneAt": "완료 시점"
+			"doneAt": "완료 시점",
+			"comment": "{count}개의 댓글",
+			"commentCount": "댓글 수"
 		},
 		"subscription": {
 			"subscribedTaskThroughParentProject": "해당 프로젝트를 통해 이 할 일을 구독하고 있으므로 여기서 구독을 취소할 수 없습니다.",
@@ -966,7 +1034,12 @@
 			"dateNth": "현재 달의 {day}일을 사용할 것입니다.",
 			"dateTime": "날짜 형식 중 하나에 \" {time} \" (또는 {timePM})을 결합하여 시간을 설정하세요.",
 			"repeats": "할 일 반복",
-			"repeatsDescription": "할 일을 일정 간격으로 반복하도록 설정하려면 할 일 텍스트에 '{suffix}'를 추가하기만 하면 됩니다. 숫자는 반드시 입력해야 하며, 유형만 사용하려면 생략할 수 있습니다(예시 참조)."
+			"repeatsDescription": "할 일을 일정 간격으로 반복하도록 설정하려면 할 일 텍스트에 '{suffix}'를 추가하기만 하면 됩니다. 숫자는 반드시 입력해야 하며, 유형만 사용하려면 생략할 수 있습니다(예시 참조).",
+			"dateWeekday": "요일을 입력하면 해당 요일의 다음 날짜가 사용됩니다"
+		},
+		"movedToProject": "할 일이 {project}(으)로 이동되었습니다.",
+		"mention": {
+			"noUsersFound": "사용자를 찾을 수 없습니다"
 		}
 	},
 	"team": {
@@ -1043,7 +1116,12 @@
 			"delete": "할 일 삭제",
 			"priority": "우선순위 변경",
 			"favorite": "이 할 일을 즐겨찾기로 / 즐겨찾지 않음으로 표시",
-			"save": "현재 할 일 저장"
+			"save": "현재 할 일 저장",
+			"openProject": "이 할 일의 프로젝트 열기",
+			"copyIdentifier": "할 일 식별자를 클립보드에 복사",
+			"copyIdentifierAndTitle": "할 일 식별자와 제목을 클립보드에 복사",
+			"copyIdentifierTitleAndUrl": "할 일 식별자, 제목 및 URL을 클립보드에 복사",
+			"copyUrl": "할 일 URL을 클립보드에 복사"
 		},
 		"project": {
 			"title": "프로젝트 보기",
@@ -1059,6 +1137,21 @@
 			"labels": "레이블로 이동",
 			"teams": "팀으로 이동",
 			"projects": "프로젝트로 이동"
+		},
+		"list": {
+			"title": "할 일 목록",
+			"navigateDown": "다음 할 일 강조",
+			"navigateUp": "이전 할 일 강조",
+			"open": "강조된 할 일 열기"
+		},
+		"gantt": {
+			"title": "간트 차트",
+			"moveTaskLeft": "할 일을 이전 날짜로 이동",
+			"moveTaskRight": "할 일을 이후 날짜로 이동",
+			"expandTaskLeft": "할 일 시작 날짜를 앞으로 확장",
+			"expandTaskRight": "할 일 종료 날짜를 뒤로 확장",
+			"shrinkTaskLeft": "시작 날짜에서 할 일 축소",
+			"shrinkTaskRight": "종료 날짜에서 할 일 축소"
 		}
 	},
 	"update": {
@@ -1097,7 +1190,8 @@
 		"title": "알림",
 		"none": "알림이 없습니다. 좋은 하루 되세요!",
 		"markAllRead": "모든 알림을 읽음으로 표시",
-		"markAllReadSuccess": "모든 알림을 읽음으로 표시하는 데 성공했습니다."
+		"markAllReadSuccess": "모든 알림을 읽음으로 표시하는 데 성공했습니다.",
+		"explainer": "구독한 작업, 프로젝트 또는 할 일에 변경이 있을 때 알림이 여기에 표시됩니다."
 	},
 	"quickActions": {
 		"commands": "명령",
@@ -1219,7 +1313,9 @@
 	},
 	"about": {
 		"title": "소개",
-		"version": "버전: {version}"
+		"version": "버전: {version}",
+		"frontendVersion": "프론트엔드 버전: {version}",
+		"apiVersion": "API 버전: {version}"
 	},
 	"time": {
 		"units": {
